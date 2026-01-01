@@ -91,6 +91,7 @@ export const updateProfile = async (req, res) => {
 	//cloudinary free service to upload pic
 	try {
 		const { profilePic } = req.body;
+
 		//because we added user through middleware
 		const userId = req.user._id;
 
