@@ -24,6 +24,7 @@ export const MessageInput = () => {
 		setImagePreview(null);
 		if (fileInputRef.current) fileInputRef.current.value = "";
 	};
+	// TODO: while selecting image if send click multiple times it will send the same image multiple times
 	const handleSendMessage = async (e) => {
 		e.preventDefault();
 		if (!text.trim() && !imagePreview) return;

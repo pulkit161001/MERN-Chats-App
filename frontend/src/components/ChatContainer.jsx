@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useChatStore } from "../store/useChatStore";
 import ChatHeader from "./ChatHeader";
 import { MessageInput } from "./MessageInput";
@@ -7,13 +7,35 @@ import { useAuthStore } from "../store/useAuthStore";
 import { formatMessageTime } from "../lib/utils";
 
 const ChatContainer = () => {
-	const { selectedUser, messages, isMessagesLoading, getMessages } =
-		useChatStore();
+	const {
+		messages,
+		getMessages,
+		isMessagesLoading,
+		selectedUser,
+		subscribeToMessages,
+		unsubscribeFromMessages,
+	} = useChatStore();
 	const { authUser } = useAuthStore();
+	const messageEndRef = useRef(null);
 
 	useEffect(() => {
 		getMessages(selectedUser._id);
-	}, [selectedUser._id, getMessages]);
+		subscribeToMessages();
+		// performance reasons
+		return () => unsubscribeFromMessages();
+	}, [
+		selectedUser._id,
+		getMessages,
+		subscribeToMessages,
+		unsubscribeFromMessages,
+	]);
+
+	// scroll to new message whenever new message occur
+	useEffect(() => {
+		if (messageEndRef.current && messages) {
+			messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+		}
+	}, [messages]);
 
 	if (isMessagesLoading) {
 		return (
@@ -37,6 +59,7 @@ const ChatContainer = () => {
 								? "chat-end"
 								: "chat-start"
 						}`}
+						ref={messageEndRef}
 					>
 						<div className="chat-image avatar">
 							<div className="size-10 rounded-full border">
