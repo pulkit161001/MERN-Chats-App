@@ -1,26 +1,25 @@
-Frontend
-├─ React
-├─ Vite
-├─ Tailwind CSS
-├─ DaisyUI
-├─ Zustand
-├─ Lucide React
-└─ React Hot Toast
+## 🧱 Tech Stack
 
-Backend
-├─ Node.js
-├─ Express.js
-├─ MongoDB
-├─ Mongoose
-├─ JSON Web Token (JWT)
-├─ bcryptjs
-└─ dotenv
+### Frontend
 
-Media & Storage
-└─ Cloudinary
+React  
+Vite  
+Tailwind CSS  
+DaisyUI  
+Zustand  
+Lucide React  
+React Hot Toast
 
-Tooling
-├─ ESLint
-├─ Prettier
-├─ Git
-└─ GitHub
+### Backend
+
+Node.js  
+Express.js  
+MongoDB  
+Mongoose  
+JSON Web Token (JWT)  
+bcryptjs  
+dotenv
+
+### Media & Storage
+
+Cloudinary
