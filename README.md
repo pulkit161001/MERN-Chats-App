@@ -1,25 +1,5 @@
 ## 🧱 Tech Stack
 
-### Frontend
-
-React  
-Vite  
-Tailwind CSS  
-DaisyUI  
-Zustand  
-Lucide React  
-React Hot Toast
-
-### Backend
-
-Node.js  
-Express.js  
-MongoDB  
-Mongoose  
-JSON Web Token (JWT)  
-bcryptjs  
-dotenv
-
-### Media & Storage
-
-Cloudinary
+**Frontend:** React, Vite, Tailwind CSS, DaisyUI, Zustand  
+**Backend:** Node.js, Express.js, MongoDB, Mongoose, JWT  
+**Media:** Cloudinary
