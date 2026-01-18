@@ -10,7 +10,7 @@ const LoginPage = () => {
 		email: "",
 		password: "",
 	});
-	const { login, isLoggingIn } = useAuthStore();
+	const { login, isLoggingIn, guestUser } = useAuthStore();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -31,9 +31,7 @@ const LoginPage = () => {
 							>
 								<MessageSquare className="size-6 text-primary" />
 							</div>
-							<h1 className="text-2xl font-bold mt-2">
-								Create Account
-							</h1>
+							<h1 className="text-2xl font-bold mt-2">Create Account</h1>
 							<p className="text-base-content/60">
 								Get started with your free account
 							</p>
@@ -43,9 +41,7 @@ const LoginPage = () => {
 					<form onSubmit={handleSubmit} className="space-y-6">
 						<div className="form-control">
 							<label className="label">
-								<span className="label-text font-medium">
-									Email
-								</span>
+								<span className="label-text font-medium">Email</span>
 							</label>
 							<div className="relative">
 								<div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -68,9 +64,7 @@ const LoginPage = () => {
 
 						<div className="form-control">
 							<label className="label">
-								<span className="label-text font-medium">
-									Password
-								</span>
+								<span className="label-text font-medium">Password</span>
 							</label>
 							<div className="relative">
 								<div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -91,9 +85,7 @@ const LoginPage = () => {
 								<button
 									type="button"
 									className="absolute inset-y-0 right-0 pr-3 flex items-center"
-									onClick={() =>
-										setShowPassword(!showPassword)
-									}
+									onClick={() => setShowPassword(!showPassword)}
 								>
 									{showPassword ? (
 										<EyeOff className="size-5 text-base-content/40" />
@@ -125,6 +117,18 @@ const LoginPage = () => {
 							<Link to="/signup" className="link link-primary">
 								Create account
 							</Link>
+						</p>
+					</div>
+					<div className="text-center">
+						<p className="text-base-content/60">
+							Don't want to create an account{" "}
+							<button
+								type="button"
+								className="link link-primary"
+								onClick={guestUser}
+							>
+								use Guest account
+							</button>
 						</p>
 					</div>
 				</div>

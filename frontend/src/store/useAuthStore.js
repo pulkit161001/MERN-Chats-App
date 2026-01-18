@@ -81,6 +81,17 @@ export const useAuthStore = create((set, get) => ({
 			set({ isUpdatingProfile: false });
 		}
 	},
+	guestUser: async () => {
+		try {
+			const res = await axiosInstance.get("/guest/random");
+			const { fullName, email, password } = res.data;
+			console.log("Guest", email, password);
+			toast.success(`Logged in as ${fullName}`);
+			await get().login({ email, password });
+		} catch (error) {
+			toast.error(error.response?.data?.message || "Guest login failed");
+		}
+	},
 	connectSocket: () => {
 		const { authUser } = get();
 		if (!authUser || get().socket?.connected) return;

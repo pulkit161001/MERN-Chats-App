@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
+import guestRoutes from "./routes/guest.route.js";
 import { connectDB } from "./lib/db.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -28,6 +29,8 @@ app.use(
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
+app.use("/api/guest", guestRoutes);
+
 if (process.env.NODE_ENV === "production") {
 	const frontendPath = path.join(__dirname, "../../frontend/dist");
 
